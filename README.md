@@ -76,6 +76,7 @@ After deployment, open the Railway public domain. The app will ask for the usern
 ### Railway Notes
 
 - The Docker image uses the official Playwright base image so Chromium is available for PNG exports.
+- `railway.json` forces Railway to use the root `Dockerfile`. If exports fail with a missing Chromium error, confirm both files are in the GitHub repository root and redeploy.
 - Output files are temporary server files. Download the ZIP after each export.
 - If Railway shows a build from the Dockerfile in the deploy logs, it picked up the correct deployment path.
 
