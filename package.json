@@ -1,0 +1,67 @@
+{
+  "name": "linkedin-design-builder",
+  "version": "0.1.0",
+  "description": "Team web app for generating locked-template LinkedIn carousel PNG exports.",
+  "main": "server/index.js",
+  "author": "ASBM Automation",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently -k \"npm run server\" \"vite --host 0.0.0.0\"",
+    "server": "node server/index.js",
+    "install:browsers": "playwright install chromium",
+    "build:renderer": "vite build",
+    "build:web": "vite build",
+    "start:web": "node server/index.js",
+    "start": "electron .",
+    "dist": "npm run build:renderer && electron-builder --win nsis",
+    "pack": "npm run build:renderer && electron-builder --win dir"
+  },
+  "dependencies": {
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "playwright": "^1.55.1",
+    "lucide-react": "^0.544.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "multer": "^2.0.2",
+    "openai": "^6.9.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.0.4",
+    "concurrently": "^9.2.1",
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12",
+    "vite": "^7.1.9",
+    "wait-on": "^8.0.4"
+  },
+  "build": {
+    "appId": "com.asbmautomation.linkedin-design-builder",
+    "productName": "LinkedIn Design Builder",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "samples/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "samples",
+        "to": "samples"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "LinkedIn Design Builder"
+    }
+  }
+}
