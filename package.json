@@ -9,6 +9,7 @@
     "dev": "concurrently -k \"npm run server\" \"vite --host 0.0.0.0\"",
     "server": "node server/index.js",
     "install:browsers": "playwright install chromium",
+    "postinstall": "playwright install chromium",
     "build:renderer": "vite build",
     "build:web": "vite build",
     "start:web": "node server/index.js",

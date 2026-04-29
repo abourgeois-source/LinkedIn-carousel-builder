@@ -1,0 +1,5 @@
+[phases.setup]
+nixPkgs = ["...", "chromium"]
+
+[variables]
+PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH = "/run/current-system/sw/bin/chromium"
